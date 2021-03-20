@@ -168,14 +168,3 @@ fun LoginScreenPreview()
   loginUI()
   LoginScreen()
 }
-/*
-val montserratFamily = FontFamily(
-  Font(R.font.montserrat_black, FontWeight.Black),
-  Font(R.font.montserrat_black_italic, FontWeight.Black),
-  Font(R.font.montserrat_bold, FontWeight.Bold),
-  Font(R.font.montserrat_extrabold, FontWeight.ExtraBold),
-  Font(R.font.montserrat_semi_bold, FontWeight.SemiBold),
-  Font(R.font.montserrat_medium, FontWeight.Medium),
-  Font(R.font.montserrat_light, FontWeight.Light)
-)
- */
