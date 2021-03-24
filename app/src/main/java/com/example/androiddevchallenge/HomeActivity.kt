@@ -19,9 +19,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.montserratTypography
 import com.example.androiddevchallenge.ui.theme.shapes
@@ -43,17 +47,58 @@ class HomeActivity : AppCompatActivity()
 @Composable
 fun homeScreen()
 {
-  Surface(color = MaterialTheme.colors.background) {
+  Surface(color = MaterialTheme.colors.surface) {}
 
-  }
-  val purple = Color(0xFF322049)
-
-  Box(Modifier.background(purple))
+  ConstraintLayout(modifier = Modifier.fillMaxSize())
   {
-    Text(text = "Balance")
+    val (button, balance_text, balance_number) = createRefs()
 
-    Text(text = "$73,589.01", style = montserratTypography.h1, color = Color.White, /*fontFamily = FontFamily.montserratFamily,*/ )
+    Text(
+      text = "Balance",
+      //style = montserratTypography.subtitle1,
+      color = MaterialTheme.colors.onBackground,
+      modifier = Modifier
+        .constrainAs(balance_text) {
+          top.linkTo(parent.top)
+          bottom.linkTo(parent.bottom)
+          start.linkTo(parent.start)
+          end.linkTo(parent.end)
+        }
+    )
+
+    Text(
+      text = "$73,589.01",
+      modifier = Modifier
+        .constrainAs(balance_number){
+          top.linkTo(balance_text.bottom)
+          start.linkTo(parent.start)
+          end.linkTo(parent.end)
+        },
+      //style = montserratTypography.h1,
+      color = MaterialTheme.colors.onBackground,
+      fontWeight = FontWeight.ExtraBold,
+      fontSize = 40.sp /*fontFamily = FontFamily.montserratFamily,*/
+    )
   }
+/*
+  Box(modifier = Modifier.fillMaxSize()) {
+    Text(
+      text = "Balance",
+      style = montserratTypography.subtitle1,
+      color = MaterialTheme.colors.onBackground,
+      modifier = Modifier
+        .offset(x = 30.dp, y = 50.dp)
+    )
+
+    Text(
+      text = "$73,589.01",
+      style = montserratTypography.h1,
+      color = MaterialTheme.colors.onBackground,
+      fontWeight = FontWeight.ExtraBold,
+      fontSize = 40.sp
+      /*fontFamily = FontFamily.montserratFamily,*/
+    )
+  }*/
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)

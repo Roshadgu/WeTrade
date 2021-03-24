@@ -121,9 +121,9 @@ fun LoginScreen()
       Text( "Welcome back",
         style = typography.h2,
         //fontFamily = montserratFamily,
-        fontWeight = FontWeight.ExtraBold,
+        //fontWeight = FontWeight.ExtraBold,
         color = Color.White,
-        fontSize = 50.sp,
+        //fontSize = 50.sp,
         textAlign = TextAlign.Center,
         modifier = Modifier.offset(y = -offsetValue)
       )

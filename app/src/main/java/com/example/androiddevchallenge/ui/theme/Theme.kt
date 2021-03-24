@@ -45,14 +45,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    MaterialTheme(
-        colors = if (darkTheme) {
-            DarkThemeColors
-        } else {
-            LightThemeColors
-        }
-    )
-    {
+    MaterialTheme(colors = if (darkTheme) DarkThemeColors else LightThemeColors) {
         content()
     }
 }
@@ -63,7 +56,7 @@ private val LightThemeColors = lightColors(
     secondary = Color.White,
     background = purple,
     onBackground = Color.White,
-    surface = Color.White,
+    surface = purple,
     onSurface = gray900,
 )
 
