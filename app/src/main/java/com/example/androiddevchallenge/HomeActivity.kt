@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.ui.theme.montserratTypography
+import com.example.androiddevchallenge.ui.theme.MontserratTypography
 import com.example.androiddevchallenge.ui.theme.shapes
 import com.example.androiddevchallenge.ui.theme.typography
 
@@ -51,7 +51,38 @@ fun homeScreen()
 
   ConstraintLayout(modifier = Modifier.fillMaxSize())
   {
-    val (button, balance_text, balance_number) = createRefs()
+    val (button, balance_text, balance_number, account_watchlist_profile) = createRefs()
+
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      modifier = Modifier
+        .constrainAs(account_watchlist_profile){
+          top.linkTo(parent.top)
+          bottom.linkTo(balance_text.bottom)
+          start.linkTo(parent.start)
+          end.linkTo(parent.end)
+        }
+    )
+    {
+      Column {
+        Text(
+          text = "Account",
+          color = MaterialTheme.colors.onBackground
+        )
+      }
+      Column {
+        Text(
+          text = "Watchlist",
+          color = MaterialTheme.colors.onBackground
+        )
+      }
+      Column {
+        Text(
+          text = "Profile",
+          color = MaterialTheme.colors.onBackground
+        )
+      }
+    }
 
     Text(
       text = "Balance",
@@ -74,31 +105,12 @@ fun homeScreen()
           start.linkTo(parent.start)
           end.linkTo(parent.end)
         },
-      //style = montserratTypography.h1,
+      style = MaterialTheme.typography.h1,
       color = MaterialTheme.colors.onBackground,
-      fontWeight = FontWeight.ExtraBold,
-      fontSize = 40.sp /*fontFamily = FontFamily.montserratFamily,*/
+      //fontWeight = FontWeight.ExtraBold,
+      //fontSize = 40.sp
     )
   }
-/*
-  Box(modifier = Modifier.fillMaxSize()) {
-    Text(
-      text = "Balance",
-      style = montserratTypography.subtitle1,
-      color = MaterialTheme.colors.onBackground,
-      modifier = Modifier
-        .offset(x = 30.dp, y = 50.dp)
-    )
-
-    Text(
-      text = "$73,589.01",
-      style = montserratTypography.h1,
-      color = MaterialTheme.colors.onBackground,
-      fontWeight = FontWeight.ExtraBold,
-      fontSize = 40.sp
-      /*fontFamily = FontFamily.montserratFamily,*/
-    )
-  }*/
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)

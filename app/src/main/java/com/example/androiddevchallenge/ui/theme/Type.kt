@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
 
-private val montserratFamily = FontFamily(
+private val montserrat = FontFamily(
     Font(R.font.montserrat_black, FontWeight.Black),
     Font(R.font.montserrat_black_italic, FontWeight.Black),
     Font(R.font.montserrat_bold, FontWeight.Bold),
@@ -33,43 +33,44 @@ private val montserratFamily = FontFamily(
     Font(R.font.montserrat_light, FontWeight.Light)
 )
 
-val montserratTypography = Typography(
+val MontserratTypography = Typography(
     h1 = TextStyle(
-        fontFamily = montserratFamily,
+        fontFamily = montserrat,
         fontWeight = FontWeight.ExtraBold,
         fontSize = 40.sp
     ),
 
     h2 = TextStyle(
-        fontFamily = montserratFamily,
+        fontFamily = montserrat,
         fontWeight = FontWeight.ExtraBold,
         fontSize = 36.sp
     ),
 
     h3 = TextStyle(
-        fontFamily = montserratFamily,
+        fontFamily = montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 13.sp
     ),
 
     subtitle1 = TextStyle(
-        fontFamily = montserratFamily,
+        fontFamily = montserrat,
         fontWeight = FontWeight.Medium,
         fontSize = 15.sp
     ),
 
     body1 = TextStyle(
-        fontFamily = montserratFamily,
+        fontFamily = montserrat,
         fontWeight = FontWeight.Light,
         fontSize = 13.sp
     ),
 
     button = TextStyle(
-        fontFamily = montserratFamily,
+        fontFamily = montserrat,
         fontWeight = FontWeight.Bold,
         fontSize = 13.sp,
     )
 )
 
 // Set of Material typography styles to start with
-val typography = Typography(defaultFontFamily = montserratFamily)
+val typography = Typography(defaultFontFamily = montserrat)
+//MaterialTheme(typography = typography, /*...*/)
