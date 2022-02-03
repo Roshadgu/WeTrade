@@ -29,7 +29,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.MontserratTypography
 import com.example.androiddevchallenge.ui.theme.shapes
-import com.example.androiddevchallenge.ui.theme.typography
 
 class HomeActivity : AppCompatActivity()
 {

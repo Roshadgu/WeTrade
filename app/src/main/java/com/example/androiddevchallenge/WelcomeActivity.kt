@@ -25,17 +25,6 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.shapes
 
-class WelcomeActivity : AppCompatActivity()
-{
-  override fun onCreate(savedInstanceState: Bundle?)
-  {
-    super.onCreate(savedInstanceState)
-    setContent {
-      welcomeScreen()
-    }
-  }
-}
-
 @Composable
 fun logInButon()
 {

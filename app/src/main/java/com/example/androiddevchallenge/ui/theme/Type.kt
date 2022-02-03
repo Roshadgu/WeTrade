@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -23,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
 
-private val montserrat = FontFamily(
+ val montserrat = FontFamily(
     Font(R.font.montserrat_black, FontWeight.Black),
     Font(R.font.montserrat_black_italic, FontWeight.Black),
     Font(R.font.montserrat_bold, FontWeight.Bold),
@@ -70,7 +71,3 @@ val MontserratTypography = Typography(
         fontSize = 13.sp,
     )
 )
-
-// Set of Material typography styles to start with
-val typography = Typography(defaultFontFamily = montserrat)
-//MaterialTheme(typography = typography, /*...*/)

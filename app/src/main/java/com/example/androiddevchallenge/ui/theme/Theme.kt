@@ -33,7 +33,7 @@ private val LightColorPalette = lightColors(
     primaryVariant = purple700,
     secondary = teal200
 
-        /* Other default colors to override
+    /* Other default colors to override
     background = Color.White,
     surface = Color.White,
     onPrimary = Color.White,
@@ -45,7 +45,9 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    MaterialTheme(colors = if (darkTheme) DarkThemeColors else LightThemeColors) {
+    MaterialTheme(
+        colors = if (darkTheme) DarkThemeColors else LightThemeColors,
+        typography = MontserratTypography) {
         content()
     }
 }
