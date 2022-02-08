@@ -24,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
 
- val montserrat = FontFamily(
+ private val montserrat = FontFamily(
     Font(R.font.montserrat_black, FontWeight.Black),
     Font(R.font.montserrat_black_italic, FontWeight.Black),
     Font(R.font.montserrat_bold, FontWeight.Bold),
@@ -44,7 +44,8 @@ val MontserratTypography = Typography(
     h2 = TextStyle(
         fontFamily = montserrat,
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 36.sp
+        fontSize = 90.sp,
+        letterSpacing = 0.sp
     ),
 
     h3 = TextStyle(

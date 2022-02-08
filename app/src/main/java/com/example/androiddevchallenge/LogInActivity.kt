@@ -38,111 +38,107 @@ import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Password
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.runtime.*
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.androiddevchallenge.ui.theme.MontserratTypography
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
-fun loginScreen()
+fun LoginScreen()
 {
- // Icon(Icons.Filled., contentDescription = null)
-  val negativeXoffest = 134.dp
-  var value = ""
-  var value2 = ""
-  val offsetValue = 100.dp
-  var ph = "Email address"
   var username by remember { mutableStateOf("") }
   var passwd by remember { mutableStateOf("") }
 
-  MaterialTheme(typography = MontserratTypography) {}
-
-  Box(modifier = Modifier.fillMaxHeight())
+  ConstraintLayout(modifier = Modifier.fillMaxSize())
   {
+    val (button, welcome, email, password, image) = createRefs()
+    val yellow = Color(0xFFE3DA00)
+
     Image(
       painter = painterResource(id = R.drawable.login_bg),
       contentDescription = null,
-      modifier = Modifier.fillMaxWidth(),
+      modifier = Modifier.fillMaxWidth().constrainAs(image){},
       contentScale = ContentScale.FillWidth
     )
-    
+
     Text(
       text = "WELCOME BACK",
-      color = Color.White,
-      fontSize = 36.sp,
+      textAlign = TextAlign.Center,
       style = MaterialTheme.typography.h2,
+      color = Color.White,
+      //fontSize = 36.sp,
       modifier = Modifier
-        .offset(x = 50.dp, y = 150.dp)
-      )
+        .constrainAs(welcome) {
+          top.linkTo(parent.top, margin = 160.dp)
+          bottom.linkTo(email.top, margin = 16.dp)
+          start.linkTo(parent.start, margin = 40.dp)
+          end.linkTo(parent.end, margin = 40.dp)
+        }
+    )
 
-    OutlinedTextField( //Email textfield
+    OutlinedTextField(
       value = username,
       onValueChange = { username = it },
       placeholder = { Text("Email address")},
       leadingIcon = { Icon(Icons.Outlined.Email, contentDescription = "Localized description") },
       colors = TextFieldDefaults.textFieldColors(unfocusedIndicatorColor = Color.Gray),
       modifier = Modifier
-        .offset(x = 15.dp, y = 326.dp)
         .width(328.dp)
         .padding(bottom = 16.dp)
+        .constrainAs(email) {
+          top.linkTo(welcome.bottom, margin = 160.dp)
+          //bottom.linkTo(password.top)
+          start.linkTo(parent.start, margin = 16.dp)
+          end.linkTo(parent.end, margin = 16.dp)
+        }
     )
 
-    OutlinedTextField( //Password textfield
+    OutlinedTextField(
       value = passwd,
       onValueChange = { passwd = it },
       colors = TextFieldDefaults.textFieldColors(unfocusedIndicatorColor = Color.Gray),
       placeholder = { Text("Password") },
       leadingIcon = { Icon(Icons.Outlined.Password, contentDescription = "Localized description") },
       modifier = Modifier
-        .offset(x = 15.dp, y = 406.dp)
         .width(328.dp)
         .padding(bottom = 16.dp)
+        .constrainAs(password) {
+          top.linkTo(email.bottom)
+          //bottom.linkTo(button.top)
+          start.linkTo(parent.start, margin = 16.dp)
+          end.linkTo(parent.end, margin = 16.dp)
+        }
     )
 
-    loginButton()
+    Button(
+      onClick ={},
+      modifier = Modifier
+        .constrainAs(button){
+          top.linkTo(password.bottom)
+//          bottom.linkTo(parent.bottom)
+          start.linkTo(parent.start, margin = 16.dp)
+          end.linkTo(parent.end, margin = 16.dp)
+        }
+        .width(340.dp)
+        .height(48.dp),
+      colors = ButtonDefaults.buttonColors(backgroundColor = yellow),
+      shape = RoundedCornerShape(50)
+    )
+    {
+      Text(text = "LOG IN")
+    }
   }
 }
 
+@Preview("Light Theme", showBackground = true, device = "Pixel 5a")
 @Composable
-fun loginButton()
+fun LoginScreenLightPreview()
 {
-  val yellow = Color(0xFFE3DA00)
-
-  Button(
-    onClick ={/*Toast.makeText(applicationContext, "Time to sign up!", Toast.LENGTH_LONG).show()*/},
-    modifier = Modifier
-      .offset(x = 6.dp, y = 500.dp)
-      .width(340.dp)
-      .height(48.dp),
-    colors = ButtonDefaults.buttonColors(backgroundColor = yellow),
-    shape = RoundedCornerShape(50)
-  )
-  {
-    Text(text = "LOG IN")
-  }
+  LoginScreen()
 }
 
-@Preview(heightDp = 640, widthDp = 360, showBackground = true, backgroundColor = 0xf5f7fa, showSystemUi = true)
+@Preview("Dark Theme")
 @Composable
-fun LoginScreenPreview()
+fun LoginScreenDarkPreview()
 {
-  loginScreen()
-}
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightLoginScreenPreview()
-{
-  MyTheme()
-  {
-    homeScreen()
-  }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkLoginScreenPreview()
-{
-  MyTheme(darkTheme = true)
-  {
-    homeScreen()
-  }
+  LoginScreen()
 }

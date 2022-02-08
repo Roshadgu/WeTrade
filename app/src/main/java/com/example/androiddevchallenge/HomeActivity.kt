@@ -30,104 +30,84 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.MontserratTypography
 import com.example.androiddevchallenge.ui.theme.shapes
 
-class HomeActivity : AppCompatActivity()
-{
-  override fun onCreate(savedInstanceState: Bundle?)
-  {
-    super.onCreate(savedInstanceState)
-    setContent {
-      MyTheme {
-        homeScreen()
-      }
-    }
-  }
-}
-
 @Composable
-fun homeScreen()
+fun HomeScreen()
 {
-  Surface(color = MaterialTheme.colors.surface) {}
-
-  ConstraintLayout(modifier = Modifier.fillMaxSize())
+  Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background))
   {
-    val (button, balance_text, balance_number, account_watchlist_profile) = createRefs()
-
-    Row(
-      verticalAlignment = Alignment.CenterVertically,
-      modifier = Modifier
-        .constrainAs(account_watchlist_profile){
-          top.linkTo(parent.top)
-          bottom.linkTo(balance_text.bottom)
-          start.linkTo(parent.start)
-          end.linkTo(parent.end)
-        }
-    )
+    ConstraintLayout(modifier = Modifier.fillMaxSize())
     {
-      Column {
-        Text(
-          text = "Account",
-          color = MaterialTheme.colors.onBackground
-        )
-      }
-      Column {
-        Text(
-          text = "Watchlist",
-          color = MaterialTheme.colors.onBackground
-        )
-      }
-      Column {
-        Text(
-          text = "Profile",
-          color = MaterialTheme.colors.onBackground
-        )
-      }
-    }
+      val (button, balance_text, balance_number, account_watchlist_profile) = createRefs()
 
-    Text(
-      text = "Balance",
-      //style = montserratTypography.subtitle1,
-      color = MaterialTheme.colors.onBackground,
-      modifier = Modifier
-        .constrainAs(balance_text) {
-          top.linkTo(parent.top)
-          bottom.linkTo(parent.bottom)
-          start.linkTo(parent.start)
-          end.linkTo(parent.end)
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+          .constrainAs(account_watchlist_profile){
+            top.linkTo(parent.top)
+            bottom.linkTo(balance_text.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+          }
+      )
+      {
+        Column {
+          Text(
+            text = "Account",
+            color = MaterialTheme.colors.onBackground
+          )
         }
-    )
+        Column {
+          Text(
+            text = "Watchlist",
+            color = MaterialTheme.colors.onBackground
+          )
+        }
+        Column {
+          Text(
+            text = "Profile",
+            color = MaterialTheme.colors.onBackground
+          )
+        }
+      }
 
-    Text(
-      text = "$73,589.01",
-      modifier = Modifier
-        .constrainAs(balance_number){
-          top.linkTo(balance_text.bottom)
-          start.linkTo(parent.start)
-          end.linkTo(parent.end)
-        },
-      style = MaterialTheme.typography.h1,
-      color = MaterialTheme.colors.onBackground,
-      //fontWeight = FontWeight.ExtraBold,
-      //fontSize = 40.sp
-    )
+      Text(
+        text = "Balance",
+        style = MaterialTheme.typography.subtitle1,
+        color = MaterialTheme.colors.onBackground,
+        modifier = Modifier
+          .constrainAs(balance_text) {
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+          }
+      )
+
+      Text(
+        text = "$73,589.01",
+        modifier = Modifier
+          .constrainAs(balance_number){
+            top.linkTo(balance_text.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+          },
+        style = MaterialTheme.typography.h1,
+        color = MaterialTheme.colors.onBackground,
+      )
+    }
   }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Preview("Light Theme", showBackground = true)
 @Composable
 fun HomeScreenLightPreview()
 {
-  MyTheme()
-  {
-    homeScreen()
-  }
+  HomeScreen()
 }
 
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Preview("Dark Theme", showBackground = true)
 @Composable
 fun HomeScreenDarkPreview()
 {
-  MyTheme(darkTheme = true)
-  {
-    homeScreen()
-  }
+  HomeScreen()
 }

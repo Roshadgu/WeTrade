@@ -52,7 +52,7 @@ fun signUpButton()
   val yellow = Color(0xFFE3DA00)
 
   Button(
-    onClick ={/*Toast.makeText(applicationContext, "Time to sign up!", Toast.LENGTH_LONG).show()*/},
+    onClick ={},
     modifier = Modifier
       .offset(x = 20.dp, y = 550.dp)
       .width(150.dp)
@@ -68,13 +68,13 @@ fun signUpButton()
 @Composable
 fun welcomeScreen()
 {
-  Box(modifier = Modifier.fillMaxHeight())
+  Box(modifier = Modifier.fillMaxSize())
   {
     Image(
       painter = painterResource(id = R.drawable.welcome_bg),
       contentDescription = null,
-      modifier = Modifier.fillMaxWidth(),
-      contentScale = ContentScale.FillWidth
+      modifier = Modifier.fillMaxSize(),
+      contentScale = ContentScale.FillBounds
     )
 
     Image(
@@ -88,9 +88,16 @@ fun welcomeScreen()
   }
 }
 
-@Preview(heightDp = 640, widthDp = 360)
+@Preview("Light Theme")
 @Composable
-fun PreviewWelcomeScreen()
+fun WelcomeScreenLightPreview()
+{
+  welcomeScreen()
+}
+
+@Preview("Dark Theme")
+@Composable
+fun WelcomeScreenDarkPreview()
 {
   welcomeScreen()
 }
