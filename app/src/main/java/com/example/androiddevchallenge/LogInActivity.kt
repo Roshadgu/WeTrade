@@ -65,7 +65,6 @@ fun LoginScreen()
       textAlign = TextAlign.Center,
       style = MaterialTheme.typography.h2,
       color = Color.White,
-      //fontSize = 36.sp,
       modifier = Modifier
         .constrainAs(welcome) {
           top.linkTo(parent.top, margin = 160.dp)
@@ -86,7 +85,6 @@ fun LoginScreen()
         .padding(bottom = 16.dp)
         .constrainAs(email) {
           top.linkTo(welcome.bottom, margin = 160.dp)
-          //bottom.linkTo(password.top)
           start.linkTo(parent.start, margin = 16.dp)
           end.linkTo(parent.end, margin = 16.dp)
         }
@@ -103,7 +101,6 @@ fun LoginScreen()
         .padding(bottom = 16.dp)
         .constrainAs(password) {
           top.linkTo(email.bottom)
-          //bottom.linkTo(button.top)
           start.linkTo(parent.start, margin = 16.dp)
           end.linkTo(parent.end, margin = 16.dp)
         }
@@ -114,7 +111,6 @@ fun LoginScreen()
       modifier = Modifier
         .constrainAs(button){
           top.linkTo(password.bottom)
-//          bottom.linkTo(parent.bottom)
           start.linkTo(parent.start, margin = 16.dp)
           end.linkTo(parent.end, margin = 16.dp)
         }

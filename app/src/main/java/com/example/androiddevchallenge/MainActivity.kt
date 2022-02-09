@@ -32,10 +32,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background))
-                {
-                    MyApp()
-                }
+//                Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background))
+//                {
+//                    MyApp()
+//                }
+
+                MyApp()
             }
         }
     }
